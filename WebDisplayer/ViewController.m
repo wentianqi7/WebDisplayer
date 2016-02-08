@@ -17,16 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // retrieving source code (json) from destination url
-    NSString *webDir = @"http://www.w3schools.com/json/";
-    NSString *filename = @"myTutorials.txt";
+    NSString *webDir = @"http://epanes.math.cmu.edu/json/";
+    NSString *filename = @"default.json";
     
-    /*
-    NSURL *sourceUrl = [NSURL URLWithString:[webDir stringByAppendingString:filename]];
-    
-    NSString *webData = [NSString stringWithContentsOfURL:sourceUrl
-                                            encoding:NSASCIIStringEncoding
-                                                    error:nil];
-    */
     NSHTTPURLResponse *response = nil;
     NSString *sourceStr = [NSString stringWithFormat:[webDir stringByAppendingString:filename]];
     NSURL *sourceUrl = [NSURL URLWithString:[sourceStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
