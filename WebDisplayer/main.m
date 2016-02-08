@@ -1,8 +1,8 @@
 //
 //  main.m
-//  WebDisplayer
+//  Testing
 //
-//  Created by Tianqi Wen on 2/1/16.
+//  Created by Tianqi Wen on 2/7/16.
 //  Copyright © 2016 Tianqi Wen. All rights reserved.
 //
 
