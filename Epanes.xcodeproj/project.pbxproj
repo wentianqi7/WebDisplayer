@@ -12,9 +12,11 @@
 		000750391C5FB75F00BA3D97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000750381C5FB75F00BA3D97 /* ViewController.m */; };
 		0007503C1C5FB75F00BA3D97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0007503A1C5FB75F00BA3D97 /* Main.storyboard */; };
 		0007503E1C5FB76000BA3D97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0007503D1C5FB76000BA3D97 /* Assets.xcassets */; };
-		000750411C5FB76000BA3D97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0007503F1C5FB76000BA3D97 /* LaunchScreen.storyboard */; };
+		000750411C5FB76000BA3D97 /* GridScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0007503F1C5FB76000BA3D97 /* GridScreen.storyboard */; };
 		0007504C1C5FB76000BA3D97 /* WebDisplayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0007504B1C5FB76000BA3D97 /* WebDisplayerTests.m */; };
 		000750571C5FB76000BA3D97 /* WebDisplayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 000750561C5FB76000BA3D97 /* WebDisplayerUITests.m */; };
+		00D889BF1C724F2C00B4C97F /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D889BE1C724F2C00B4C97F /* CollectionViewController.m */; };
+		00D889C91C72687200B4C97F /* epanes.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D889C81C72687200B4C97F /* epanes.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,7 @@
 		000750381C5FB75F00BA3D97 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0007503B1C5FB75F00BA3D97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0007503D1C5FB76000BA3D97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		000750401C5FB76000BA3D97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		000750401C5FB76000BA3D97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GridScreen.storyboard; sourceTree = "<group>"; };
 		000750421C5FB76000BA3D97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		000750471C5FB76000BA3D97 /* Epanes.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Epanes.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0007504B1C5FB76000BA3D97 /* WebDisplayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDisplayerTests.m; sourceTree = "<group>"; };
@@ -51,6 +53,9 @@
 		000750521C5FB76000BA3D97 /* Epanes.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Epanes.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		000750561C5FB76000BA3D97 /* WebDisplayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDisplayerUITests.m; sourceTree = "<group>"; };
 		000750581C5FB76000BA3D97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00D889BD1C724F2C00B4C97F /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = ../CollectionViewController.h; sourceTree = "<group>"; };
+		00D889BE1C724F2C00B4C97F /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = ../CollectionViewController.m; sourceTree = "<group>"; };
+		00D889C81C72687200B4C97F /* epanes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = epanes.png; path = ../../epanes.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +106,15 @@
 		000750301C5FB75F00BA3D97 /* WebDisplayer */ = {
 			isa = PBXGroup;
 			children = (
+				00D889BD1C724F2C00B4C97F /* CollectionViewController.h */,
+				00D889BE1C724F2C00B4C97F /* CollectionViewController.m */,
 				000750341C5FB75F00BA3D97 /* AppDelegate.h */,
 				000750351C5FB75F00BA3D97 /* AppDelegate.m */,
 				000750371C5FB75F00BA3D97 /* ViewController.h */,
 				000750381C5FB75F00BA3D97 /* ViewController.m */,
 				0007503A1C5FB75F00BA3D97 /* Main.storyboard */,
 				0007503D1C5FB76000BA3D97 /* Assets.xcassets */,
-				0007503F1C5FB76000BA3D97 /* LaunchScreen.storyboard */,
+				0007503F1C5FB76000BA3D97 /* GridScreen.storyboard */,
 				000750421C5FB76000BA3D97 /* Info.plist */,
 				000750311C5FB75F00BA3D97 /* Supporting Files */,
 			);
@@ -117,6 +124,7 @@
 		000750311C5FB75F00BA3D97 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00D889C81C72687200B4C97F /* epanes.png */,
 				000750321C5FB75F00BA3D97 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -243,8 +251,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				000750411C5FB76000BA3D97 /* LaunchScreen.storyboard in Resources */,
+				000750411C5FB76000BA3D97 /* GridScreen.storyboard in Resources */,
 				0007503E1C5FB76000BA3D97 /* Assets.xcassets in Resources */,
+				00D889C91C72687200B4C97F /* epanes.png in Resources */,
 				0007503C1C5FB75F00BA3D97 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D889BF1C724F2C00B4C97F /* CollectionViewController.m in Sources */,
 				000750391C5FB75F00BA3D97 /* ViewController.m in Sources */,
 				000750361C5FB75F00BA3D97 /* AppDelegate.m in Sources */,
 				000750331C5FB75F00BA3D97 /* main.m in Sources */,
@@ -316,12 +326,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		0007503F1C5FB76000BA3D97 /* LaunchScreen.storyboard */ = {
+		0007503F1C5FB76000BA3D97 /* GridScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				000750401C5FB76000BA3D97 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = GridScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
