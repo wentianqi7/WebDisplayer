@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0007502E1C5FB75F00BA3D97 /* WebDisplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebDisplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0007502E1C5FB75F00BA3D97 /* Epanes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epanes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000750321C5FB75F00BA3D97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		000750341C5FB75F00BA3D97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		000750351C5FB75F00BA3D97 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,10 +45,10 @@
 		0007503D1C5FB76000BA3D97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		000750401C5FB76000BA3D97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		000750421C5FB76000BA3D97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		000750471C5FB76000BA3D97 /* WebDisplayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebDisplayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		000750471C5FB76000BA3D97 /* Epanes.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Epanes.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0007504B1C5FB76000BA3D97 /* WebDisplayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDisplayerTests.m; sourceTree = "<group>"; };
 		0007504D1C5FB76000BA3D97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		000750521C5FB76000BA3D97 /* WebDisplayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebDisplayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		000750521C5FB76000BA3D97 /* Epanes.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Epanes.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		000750561C5FB76000BA3D97 /* WebDisplayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDisplayerUITests.m; sourceTree = "<group>"; };
 		000750581C5FB76000BA3D97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,9 +91,9 @@
 		0007502F1C5FB75F00BA3D97 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0007502E1C5FB75F00BA3D97 /* WebDisplayer.app */,
-				000750471C5FB76000BA3D97 /* WebDisplayerTests.xctest */,
-				000750521C5FB76000BA3D97 /* WebDisplayerUITests.xctest */,
+				0007502E1C5FB75F00BA3D97 /* Epanes.app */,
+				000750471C5FB76000BA3D97 /* Epanes.xctest */,
+				000750521C5FB76000BA3D97 /* Epanes.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,9 +143,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0007502D1C5FB75F00BA3D97 /* WebDisplayer */ = {
+		0007502D1C5FB75F00BA3D97 /* Epanes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0007505B1C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "WebDisplayer" */;
+			buildConfigurationList = 0007505B1C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "Epanes" */;
 			buildPhases = (
 				0007502A1C5FB75F00BA3D97 /* Sources */,
 				0007502B1C5FB75F00BA3D97 /* Frameworks */,
@@ -155,14 +155,14 @@
 			);
 			dependencies = (
 			);
-			name = WebDisplayer;
+			name = Epanes;
 			productName = WebDisplayer;
-			productReference = 0007502E1C5FB75F00BA3D97 /* WebDisplayer.app */;
+			productReference = 0007502E1C5FB75F00BA3D97 /* Epanes.app */;
 			productType = "com.apple.product-type.application";
 		};
-		000750461C5FB76000BA3D97 /* WebDisplayerTests */ = {
+		000750461C5FB76000BA3D97 /* EpanesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0007505E1C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "WebDisplayerTests" */;
+			buildConfigurationList = 0007505E1C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "EpanesTests" */;
 			buildPhases = (
 				000750431C5FB76000BA3D97 /* Sources */,
 				000750441C5FB76000BA3D97 /* Frameworks */,
@@ -173,14 +173,14 @@
 			dependencies = (
 				000750491C5FB76000BA3D97 /* PBXTargetDependency */,
 			);
-			name = WebDisplayerTests;
+			name = EpanesTests;
 			productName = WebDisplayerTests;
-			productReference = 000750471C5FB76000BA3D97 /* WebDisplayerTests.xctest */;
+			productReference = 000750471C5FB76000BA3D97 /* Epanes.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		000750511C5FB76000BA3D97 /* WebDisplayerUITests */ = {
+		000750511C5FB76000BA3D97 /* EpanesUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 000750611C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "WebDisplayerUITests" */;
+			buildConfigurationList = 000750611C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "EpanesUITests" */;
 			buildPhases = (
 				0007504E1C5FB76000BA3D97 /* Sources */,
 				0007504F1C5FB76000BA3D97 /* Frameworks */,
@@ -191,9 +191,9 @@
 			dependencies = (
 				000750541C5FB76000BA3D97 /* PBXTargetDependency */,
 			);
-			name = WebDisplayerUITests;
+			name = EpanesUITests;
 			productName = WebDisplayerUITests;
-			productReference = 000750521C5FB76000BA3D97 /* WebDisplayerUITests.xctest */;
+			productReference = 000750521C5FB76000BA3D97 /* Epanes.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -218,7 +218,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 000750291C5FB75F00BA3D97 /* Build configuration list for PBXProject "WebDisplayer" */;
+			buildConfigurationList = 000750291C5FB75F00BA3D97 /* Build configuration list for PBXProject "Epanes" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -231,9 +231,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0007502D1C5FB75F00BA3D97 /* WebDisplayer */,
-				000750461C5FB76000BA3D97 /* WebDisplayerTests */,
-				000750511C5FB76000BA3D97 /* WebDisplayerUITests */,
+				0007502D1C5FB75F00BA3D97 /* Epanes */,
+				000750461C5FB76000BA3D97 /* EpanesTests */,
+				000750511C5FB76000BA3D97 /* EpanesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -297,12 +297,12 @@
 /* Begin PBXTargetDependency section */
 		000750491C5FB76000BA3D97 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0007502D1C5FB75F00BA3D97 /* WebDisplayer */;
+			target = 0007502D1C5FB75F00BA3D97 /* Epanes */;
 			targetProxy = 000750481C5FB76000BA3D97 /* PBXContainerItemProxy */;
 		};
 		000750541C5FB76000BA3D97 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0007502D1C5FB75F00BA3D97 /* WebDisplayer */;
+			target = 0007502D1C5FB75F00BA3D97 /* Epanes */;
 			targetProxy = 000750531C5FB76000BA3D97 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -412,24 +412,24 @@
 		0007505C1C5FB76000BA3D97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				INFOPLIST_FILE = WebDisplayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tianqiw.cmu.edu.WebDisplayer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Epanes;
 			};
 			name = Debug;
 		};
 		0007505D1C5FB76000BA3D97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				INFOPLIST_FILE = WebDisplayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tianqiw.cmu.edu.WebDisplayer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Epanes;
 			};
 			name = Release;
 		};
@@ -440,8 +440,8 @@
 				INFOPLIST_FILE = WebDisplayerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tianqiw.cmu.edu.WebDisplayerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebDisplayer.app/WebDisplayer";
+				PRODUCT_NAME = Epanes;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Epanes.app/Epanes";
 			};
 			name = Debug;
 		};
@@ -452,8 +452,8 @@
 				INFOPLIST_FILE = WebDisplayerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tianqiw.cmu.edu.WebDisplayerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebDisplayer.app/WebDisplayer";
+				PRODUCT_NAME = Epanes;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Epanes.app/Epanes";
 			};
 			name = Release;
 		};
@@ -463,7 +463,7 @@
 				INFOPLIST_FILE = WebDisplayerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tianqiw.cmu.edu.WebDisplayerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Epanes;
 				TEST_TARGET_NAME = WebDisplayer;
 				USES_XCTRUNNER = YES;
 			};
@@ -475,7 +475,7 @@
 				INFOPLIST_FILE = WebDisplayerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tianqiw.cmu.edu.WebDisplayerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Epanes;
 				TEST_TARGET_NAME = WebDisplayer;
 				USES_XCTRUNNER = YES;
 			};
@@ -484,7 +484,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		000750291C5FB75F00BA3D97 /* Build configuration list for PBXProject "WebDisplayer" */ = {
+		000750291C5FB75F00BA3D97 /* Build configuration list for PBXProject "Epanes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				000750591C5FB76000BA3D97 /* Debug */,
@@ -493,29 +493,32 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0007505B1C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "WebDisplayer" */ = {
+		0007505B1C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "Epanes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0007505C1C5FB76000BA3D97 /* Debug */,
 				0007505D1C5FB76000BA3D97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		0007505E1C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "WebDisplayerTests" */ = {
+		0007505E1C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "EpanesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0007505F1C5FB76000BA3D97 /* Debug */,
 				000750601C5FB76000BA3D97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		000750611C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "WebDisplayerUITests" */ = {
+		000750611C5FB76000BA3D97 /* Build configuration list for PBXNativeTarget "EpanesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				000750621C5FB76000BA3D97 /* Debug */,
 				000750631C5FB76000BA3D97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

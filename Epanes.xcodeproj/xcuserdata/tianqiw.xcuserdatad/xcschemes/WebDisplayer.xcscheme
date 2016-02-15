@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0007502D1C5FB75F00BA3D97"
-               BuildableName = "WebDisplayer.app"
-               BlueprintName = "WebDisplayer"
-               ReferencedContainer = "container:WebDisplayer.xcodeproj">
+               BuildableName = "Epanes.app"
+               BlueprintName = "Epanes"
+               ReferencedContainer = "container:Epanes.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "000750461C5FB76000BA3D97"
-               BuildableName = "WebDisplayerTests.xctest"
-               BlueprintName = "WebDisplayerTests"
-               ReferencedContainer = "container:WebDisplayer.xcodeproj">
+               BuildableName = "Epanes.xctest"
+               BlueprintName = "EpanesTests"
+               ReferencedContainer = "container:Epanes.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "000750511C5FB76000BA3D97"
-               BuildableName = "WebDisplayerUITests.xctest"
-               BlueprintName = "WebDisplayerUITests"
-               ReferencedContainer = "container:WebDisplayer.xcodeproj">
+               BuildableName = "Epanes.xctest"
+               BlueprintName = "EpanesUITests"
+               ReferencedContainer = "container:Epanes.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0007502D1C5FB75F00BA3D97"
-            BuildableName = "WebDisplayer.app"
-            BlueprintName = "WebDisplayer"
-            ReferencedContainer = "container:WebDisplayer.xcodeproj">
+            BuildableName = "Epanes.app"
+            BlueprintName = "Epanes"
+            ReferencedContainer = "container:Epanes.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0007502D1C5FB75F00BA3D97"
-            BuildableName = "WebDisplayer.app"
-            BlueprintName = "WebDisplayer"
-            ReferencedContainer = "container:WebDisplayer.xcodeproj">
+            BuildableName = "Epanes.app"
+            BlueprintName = "Epanes"
+            ReferencedContainer = "container:Epanes.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0007502D1C5FB75F00BA3D97"
-            BuildableName = "WebDisplayer.app"
-            BlueprintName = "WebDisplayer"
-            ReferencedContainer = "container:WebDisplayer.xcodeproj">
+            BuildableName = "Epanes.app"
+            BlueprintName = "Epanes"
+            ReferencedContainer = "container:Epanes.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
