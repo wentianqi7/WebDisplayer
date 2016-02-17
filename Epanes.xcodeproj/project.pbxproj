@@ -15,7 +15,8 @@
 		000750411C5FB76000BA3D97 /* GridScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0007503F1C5FB76000BA3D97 /* GridScreen.storyboard */; };
 		0007504C1C5FB76000BA3D97 /* WebDisplayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0007504B1C5FB76000BA3D97 /* WebDisplayerTests.m */; };
 		000750571C5FB76000BA3D97 /* WebDisplayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 000750561C5FB76000BA3D97 /* WebDisplayerUITests.m */; };
-		00D889BF1C724F2C00B4C97F /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D889BE1C724F2C00B4C97F /* CollectionViewController.m */; };
+		00606DAD1C752984002CE601 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00606DAC1C752984002CE601 /* CollectionViewController.m */; };
+		00606DB01C7529A2002CE601 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00606DAF1C7529A2002CE601 /* CollectionViewCell.m */; };
 		00D889C91C72687200B4C97F /* epanes.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D889C81C72687200B4C97F /* epanes.png */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +54,10 @@
 		000750521C5FB76000BA3D97 /* Epanes.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Epanes.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		000750561C5FB76000BA3D97 /* WebDisplayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDisplayerUITests.m; sourceTree = "<group>"; };
 		000750581C5FB76000BA3D97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00D889BD1C724F2C00B4C97F /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = ../CollectionViewController.h; sourceTree = "<group>"; };
-		00D889BE1C724F2C00B4C97F /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = ../CollectionViewController.m; sourceTree = "<group>"; };
+		00606DAB1C752984002CE601 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		00606DAC1C752984002CE601 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		00606DAE1C7529A2002CE601 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		00606DAF1C7529A2002CE601 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		00D889C81C72687200B4C97F /* epanes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = epanes.png; path = ../../epanes.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,8 +109,10 @@
 		000750301C5FB75F00BA3D97 /* WebDisplayer */ = {
 			isa = PBXGroup;
 			children = (
-				00D889BD1C724F2C00B4C97F /* CollectionViewController.h */,
-				00D889BE1C724F2C00B4C97F /* CollectionViewController.m */,
+				00606DAB1C752984002CE601 /* CollectionViewController.h */,
+				00606DAC1C752984002CE601 /* CollectionViewController.m */,
+				00606DAE1C7529A2002CE601 /* CollectionViewCell.h */,
+				00606DAF1C7529A2002CE601 /* CollectionViewCell.m */,
 				000750341C5FB75F00BA3D97 /* AppDelegate.h */,
 				000750351C5FB75F00BA3D97 /* AppDelegate.m */,
 				000750371C5FB75F00BA3D97 /* ViewController.h */,
@@ -279,7 +284,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00D889BF1C724F2C00B4C97F /* CollectionViewController.m in Sources */,
+				00606DAD1C752984002CE601 /* CollectionViewController.m in Sources */,
+				00606DB01C7529A2002CE601 /* CollectionViewCell.m in Sources */,
 				000750391C5FB75F00BA3D97 /* ViewController.m in Sources */,
 				000750361C5FB75F00BA3D97 /* AppDelegate.m in Sources */,
 				000750331C5FB75F00BA3D97 /* main.m in Sources */,

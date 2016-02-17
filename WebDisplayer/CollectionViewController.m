@@ -2,11 +2,12 @@
 //  CollectionViewController.m
 //  Epanes
 //
-//  Created by Tianqi Wen on 2/15/16.
+//  Created by Tianqi Wen on 2/17/16.
 //  Copyright © 2016 Tianqi Wen. All rights reserved.
 //
 
 #import "CollectionViewController.h"
+#import "CollectionViewCell.h";
 
 @interface CollectionViewController ()
 
@@ -23,21 +24,9 @@ static NSString * const reuseIdentifier = @"Cell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
-    NSString *webDir = @"http://epanes.math.cmu.edu/json/";
-    NSString *filename = @"default.json";
-    
-    NSHTTPURLResponse *response = nil;
-    NSString *sourceStr = [NSString stringWithFormat:[webDir stringByAppendingString:filename]];
-    NSURL *sourceUrl = [NSURL URLWithString:[sourceStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:sourceUrl
-                                                  cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    //_projectObjects  = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
-    _projectObjects = [NSMutableArray arrayWithObjects:@"epanes.png",@"epanes.png",@"epanes.png", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,27 +47,40 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"number of items in section = %@", [NSString stringWithFormat:@"%d", _projectObjects.count]);
-    return _projectObjects.count;
+    return 50;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"Cell";
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    UIImageView *projImageView = (UIImageView *)[cell viewWithTag:100];
-    projImageView.image = [UIImage imageNamed:[_projectObjects objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%li", indexPath.row];
+    
     return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
