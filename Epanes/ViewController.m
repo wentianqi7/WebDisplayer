@@ -34,9 +34,7 @@
 	}
 	
 	// set content of webview to the url
-	NSURL *destUrl = [NSURL URLWithString:[destStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:destUrl];
-	[_webView loadRequest:urlRequest];
+	[self loadFromUrl:destStr];
 	
 	// essential initiations
 	// register button with listener
@@ -49,9 +47,12 @@
 }
 
 - (IBAction)titleButtonClick:(id)sender {
+	/*
 	CollectionViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
 	[self presentModalViewController:viewController animated:YES];
-	
+	 */
+	NSString *destUrl = @"http://epanes.math.cmu.edu";
+	[self loadFromUrl:destUrl];
 }
 
 // get json content from given website with filename
@@ -72,6 +73,12 @@
 	NSData *data = [inputStr dataUsingEncoding:NSUTF8StringEncoding];
 	NSString *outputStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	return outputStr;
+}
+
+- (void)loadFromUrl:(NSString *)destUrlStr {
+	NSURL *destUrl = [NSURL URLWithString:[destUrlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:destUrl];
+	[_webView loadRequest:urlRequest];
 }
 
 
