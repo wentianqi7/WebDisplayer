@@ -430,6 +430,7 @@
 				689F65031C75524F006D7245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		689F65041C75524F006D7245 /* Build configuration list for PBXNativeTarget "EpanesTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +439,7 @@
 				689F65061C75524F006D7245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
