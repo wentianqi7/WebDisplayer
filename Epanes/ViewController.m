@@ -7,9 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "CollectionViewController.h"
+#import "TableViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UIWebViewDelegate>
 
 @end
 
@@ -17,7 +17,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+    
+    _history = [[NSMutableArray alloc] init];
+    _projects = [[NSMutableArray alloc] init];
+
 	// get url from default.json
 	NSString *webDir = @"http://epanes.math.cmu.edu/json/";
 	NSString *filename = @"default.json";
@@ -29,16 +32,25 @@
 		if (string) {
 			// valid project field found
 			destStr = [self processString:string];
-			NSLog(@"%@", destStr);
+			NSLog(@"webview loaded - dest: %@", destStr);
 		}
 	}
 	
 	// set content of webview to the url
 	[self loadFromUrl:destStr];
 	
-	// essential initiations
 	// register button with listener
 	[_titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // get all valid projects
+    NSMutableArray *projResult = [self getJsonContent:@"http://epanes.math.cmu.edu" filename:@"/projects.json"];
+    for (NSMutableDictionary *dic in projResult) {
+        NSString *string = dic[@"url"];
+        if (string) {
+            [_projects addObject:string];
+            NSLog(@"load project: %@, %lu", string, _projects.count);
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,12 +59,8 @@
 }
 
 - (IBAction)titleButtonClick:(id)sender {
-	/*
-	CollectionViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
+	TableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
 	[self presentModalViewController:viewController animated:YES];
-	 */
-	NSString *destUrl = @"http://epanes.math.cmu.edu";
-	[self loadFromUrl:destUrl];
 }
 
 // get json content from given website with filename
@@ -77,10 +85,23 @@
 
 - (void)loadFromUrl:(NSString *)destUrlStr {
 	NSURL *destUrl = [NSURL URLWithString:[destUrlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:destUrl];
+	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:destUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
 	[_webView loadRequest:urlRequest];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    _webView.delegate = self;
+}
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(nonnull NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSString *urlStr = request.mainDocumentURL.absoluteString;
+    if(![_history containsObject:urlStr]){
+        [_history addObject:urlStr];
+        NSLog(@"%@, %lu", urlStr, _history.count);
+    } else {
+        NSLog(@"already exist: %@, %lu", urlStr, _history.count);
+    }
+    return TRUE;
+}
 
 @end

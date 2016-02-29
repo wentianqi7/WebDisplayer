@@ -8,6 +8,7 @@
 
 #import "TableViewController.h"
 #import "TableViewCell.h"
+#import "ViewController.h"
 
 @interface TableViewController ()
 
@@ -23,6 +24,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [_tableButton addTarget:self action:@selector(tableButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (IBAction)tableButtonClick:(id)sender {
+    ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    [self presentModalViewController:viewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

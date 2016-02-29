@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIButton *titleButton;
 @property (nonatomic) NSString *destStr;
-
+@property NSMutableArray *projects;
+@property NSMutableArray *history;
 @end
 
