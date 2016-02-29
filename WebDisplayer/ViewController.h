@@ -13,7 +13,5 @@
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIButton *titleButton;
 
-- (IBAction)titleButtonClick:(id)sender;
-
 @end
 

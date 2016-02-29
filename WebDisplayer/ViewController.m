@@ -54,7 +54,7 @@
     
     // essential initiations
     // register button with listener
-    [_titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    //[_titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,13 +62,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
 - (IBAction)titleButtonClick:(id)sender {
     NSString *destStr = [NSString stringWithFormat:@"http://www.google.com"];
     NSURL *destUrl = [NSURL URLWithString:destStr];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:destUrl];
     [_webView loadRequest:urlRequest];
 }
-
+*/
 
 
 @end
