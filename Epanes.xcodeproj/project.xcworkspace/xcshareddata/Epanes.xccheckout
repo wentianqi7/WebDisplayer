@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>59859751-DB11-45BA-8A39-5656689857CF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Epanes</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B403E34D1A1DB4603599C56212F43940396AAC4F</key>
+		<string>https://github.com/wentianqi7/WebDisplayer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Epanes.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B403E34D1A1DB4603599C56212F43940396AAC4F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/wentianqi7/WebDisplayer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B403E34D1A1DB4603599C56212F43940396AAC4F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B403E34D1A1DB4603599C56212F43940396AAC4F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WebDisplayer</string>
+		</dict>
+	</array>
+</dict>
+</plist>
