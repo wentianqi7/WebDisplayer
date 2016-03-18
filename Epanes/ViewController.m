@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TableViewController.h"
+#import "DBManager.h"
 
 @interface ViewController ()<UIWebViewDelegate>
 
@@ -19,22 +20,26 @@
 	[super viewDidLoad];
     
     _history = [[NSMutableArray alloc] init];
-    _projects = [[NSMutableArray alloc] init];
+    _projectMap = [[NSMutableDictionary alloc] init];
 
 	// get url from default.json
 	NSString *webDir = @"http://epanes.math.cmu.edu/json/";
 	NSString *filename = @"default.json";
 	NSString *destStr;
 	
-	NSMutableArray *result = [self getJsonContent:webDir filename:filename];
-	for (NSMutableDictionary *dic in result) {
-		NSString *string = dic[@"url"];
-		if (string) {
-			// valid project field found
-			destStr = [self processString:string];
-			NSLog(@"webview loaded - dest: %@", destStr);
-		}
-	}
+    if (_destStr == NULL) {
+        NSMutableArray *result = [self getJsonContent:webDir filename:filename];
+        for (NSMutableDictionary *dic in result) {
+            NSString *string = dic[@"url"];
+            if (string) {
+                // valid project field found
+                destStr = [self processString:string];
+                NSLog(@"webview loaded - dest: %@", destStr);
+            }
+        }
+    } else {
+        destStr = _destStr;
+    }
 	
 	// set content of webview to the url
 	[self loadFromUrl:destStr];
@@ -46,9 +51,10 @@
     NSMutableArray *projResult = [self getJsonContent:@"http://epanes.math.cmu.edu" filename:@"/projects.json"];
     for (NSMutableDictionary *dic in projResult) {
         NSString *string = dic[@"url"];
+        NSString *projID = dic[@"id"];
         if (string) {
-            [_projects addObject:string];
-            NSLog(@"load project: %@, %lu", string, _projects.count);
+            [_projectMap setValue:projID forKey:string];
+            NSLog(@"load project: %@, %@, %lu", projID, string, _projectMap.count);
         }
     }
 }
@@ -95,11 +101,16 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(nonnull NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString *urlStr = request.mainDocumentURL.absoluteString;
-    if(![_history containsObject:urlStr]){
-        [_history addObject:urlStr];
-        NSLog(@"%@, %lu", urlStr, _history.count);
-    } else {
-        NSLog(@"already exist: %@, %lu", urlStr, _history.count);
+    NSString *value = _projectMap[urlStr];
+    if (value) {
+        // save data to database
+        int projID = [value intValue];
+        BOOL success = [[DBManager getSharedInstance] saveData:projID];
+        if (success) {
+            NSLog(@"save %d to database", projID);
+        } else {
+            NSLog(@"insert to database failed");
+        }
     }
     return TRUE;
 }

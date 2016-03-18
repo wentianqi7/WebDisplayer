@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "TableViewCell.h"
 #import "ViewController.h"
+#import "DBManager.h"
 
 @interface TableViewController ()
 
@@ -18,17 +19,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [_tableButton addTarget:self action:@selector(tableButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    _projects = [[NSMutableArray alloc] init];
+    _projNameMap = [[NSMutableDictionary alloc] init];
+    _projUrlMap = [[NSMutableDictionary alloc] init];
+    _projects = [[DBManager getSharedInstance] getRecentHistory:5];
+    if (_projects) {
+        // get all valid projects
+        NSMutableArray *projResult = [self getJsonContent:@"http://epanes.math.cmu.edu" filename:@"/projects.json"];
+        for (NSMutableDictionary *dic in projResult) {
+            NSString *string = dic[@"title"];
+            NSString *projID = dic[@"id"];
+            NSString *url = dic[@"url"];
+            if (string && projID && url) {
+                [_projNameMap setValue:string forKey:projID];
+                [_projUrlMap setValue:url forKey:projID];
+                NSLog(@"id = %@, name = %@", projID, string);
+            }
+        }
+    }
 }
 
 - (IBAction)tableButtonClick:(id)sender {
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    viewController.destStr = NULL;
     [self presentModalViewController:viewController animated:YES];
 }
 
@@ -40,73 +54,39 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 5;
+    return _projects.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
-    cell.tableCellText.text = @"Project";
+    NSString *projID = [_projects objectAtIndex:indexPath.row];
+    cell.tableCellText.text = _projNameMap[projID];
     return cell;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    NSString *projID = [_projects objectAtIndex:indexPath.row];
+    viewController.destStr = _projUrlMap[projID];
+    NSLog(@"%@", viewController.destStr);
+    [self presentModalViewController:viewController animated:YES];
+}
+
+// get json content from given website with filename
+- (NSMutableArray *)getJsonContent:(NSString *)webDir filename:(NSString *)filename {
+    NSHTTPURLResponse *response = nil;
+    NSString *sourceStr = [NSString stringWithFormat:[webDir stringByAppendingString:filename]];
+    NSURL *sourceUrl = [NSURL URLWithString:[sourceStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    // Configure the cell...
-    
-    return cell;
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:sourceUrl
+                                                  cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    NSMutableArray *result  = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+    return result;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

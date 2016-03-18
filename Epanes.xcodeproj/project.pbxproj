@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00C23C551C9B6F8B00A9918A /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C23C541C9B6F8B00A9918A /* DBManager.m */; };
+		00C23C571C9B78CA00A9918A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C23C561C9B78CA00A9918A /* libsqlite3.tbd */; };
 		00D0E1F61C84A70B005FC012 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D0E1F51C84A70B005FC012 /* TableViewCell.m */; };
 		00D0E1F91C84A718005FC012 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D0E1F81C84A718005FC012 /* TableViewController.m */; };
 		689F64E41C75524F006D7245 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F64E31C75524F006D7245 /* main.m */; };
@@ -16,8 +18,6 @@
 		689F64EF1C75524F006D7245 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 689F64EE1C75524F006D7245 /* Images.xcassets */; };
 		689F64F21C75524F006D7245 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 689F64F01C75524F006D7245 /* LaunchScreen.xib */; };
 		689F64FE1C75524F006D7245 /* EpanesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F64FD1C75524F006D7245 /* EpanesTests.m */; };
-		689F65091C7554C0006D7245 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F65081C7554C0006D7245 /* CollectionViewController.m */; };
-		689F650C1C7554D2006D7245 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F650B1C7554D2006D7245 /* CollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00C23C531C9B6F8B00A9918A /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		00C23C541C9B6F8B00A9918A /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		00C23C561C9B78CA00A9918A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		00D0E1F41C84A70B005FC012 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		00D0E1F51C84A70B005FC012 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		00D0E1F71C84A718005FC012 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
@@ -48,10 +51,6 @@
 		689F64F71C75524F006D7245 /* EpanesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EpanesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		689F64FC1C75524F006D7245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		689F64FD1C75524F006D7245 /* EpanesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpanesTests.m; sourceTree = "<group>"; };
-		689F65071C7554C0006D7245 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		689F65081C7554C0006D7245 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		689F650A1C7554D2006D7245 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
-		689F650B1C7554D2006D7245 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C23C571C9B78CA00A9918A /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +75,7 @@
 		689F64D51C75524F006D7245 = {
 			isa = PBXGroup;
 			children = (
+				00C23C561C9B78CA00A9918A /* libsqlite3.tbd */,
 				689F64E01C75524F006D7245 /* Epanes */,
 				689F64FA1C75524F006D7245 /* EpanesTests */,
 				689F64DF1C75524F006D7245 /* Products */,
@@ -93,6 +94,8 @@
 		689F64E01C75524F006D7245 /* Epanes */ = {
 			isa = PBXGroup;
 			children = (
+				00C23C531C9B6F8B00A9918A /* DBManager.h */,
+				00C23C541C9B6F8B00A9918A /* DBManager.m */,
 				689F64E51C75524F006D7245 /* AppDelegate.h */,
 				689F64E61C75524F006D7245 /* AppDelegate.m */,
 				689F64E81C75524F006D7245 /* ViewController.h */,
@@ -102,10 +105,6 @@
 				00D0E1F51C84A70B005FC012 /* TableViewCell.m */,
 				00D0E1F71C84A718005FC012 /* TableViewController.h */,
 				00D0E1F81C84A718005FC012 /* TableViewController.m */,
-				689F65071C7554C0006D7245 /* CollectionViewController.h */,
-				689F65081C7554C0006D7245 /* CollectionViewController.m */,
-				689F650A1C7554D2006D7245 /* CollectionViewCell.h */,
-				689F650B1C7554D2006D7245 /* CollectionViewCell.m */,
 				689F64EE1C75524F006D7245 /* Images.xcassets */,
 				689F64F01C75524F006D7245 /* LaunchScreen.xib */,
 				689F64E11C75524F006D7245 /* Supporting Files */,
@@ -240,11 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				689F65091C7554C0006D7245 /* CollectionViewController.m in Sources */,
 				00D0E1F61C84A70B005FC012 /* TableViewCell.m in Sources */,
-				689F650C1C7554D2006D7245 /* CollectionViewCell.m in Sources */,
 				689F64EA1C75524F006D7245 /* ViewController.m in Sources */,
 				689F64E71C75524F006D7245 /* AppDelegate.m in Sources */,
+				00C23C551C9B6F8B00A9918A /* DBManager.m in Sources */,
 				00D0E1F91C84A718005FC012 /* TableViewController.m in Sources */,
 				689F64E41C75524F006D7245 /* main.m in Sources */,
 			);
