@@ -17,31 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    TableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
-    //viewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2, [UIScreen mainScreen].bounds.size.height / 2 , 18, 36);
-    //viewController.view.frame = CGRectMake(20, 100, 100, 200);
     
+    TableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
+
+    // set up subview size
     CGFloat scaleX = 180/viewController.view.frame.size.width;
     CGFloat scaleY = 240/viewController.view.frame.size.height;
     CGFloat scale = MIN(scaleX, scaleY);
     
     viewController.view.transform = CGAffineTransformMakeScale(scale, scale);
-    
-    //Center
     viewController.view.center = CGPointMake(viewController.view.frame.size.width/2, viewController.view.frame.size.height/2);
-    
-    //Relayout
     [viewController.view setNeedsLayout];
-    
     viewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 90, [UIScreen mainScreen].bounds.size.height / 2 - 120, 180, 240);
-    
     [viewController.tableView setDelegate:viewController];
     [viewController.tableView setDataSource:viewController];
-    //viewController.view.userInteractionEnabled = NO;
     
     [self.view addSubview:viewController.view];
-    viewController.view.userInteractionEnabled = YES;
+    [self addChildViewController:viewController];
 }
 
 - (void)didReceiveMemoryWarning {

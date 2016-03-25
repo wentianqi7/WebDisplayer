@@ -71,11 +71,11 @@
     //[self presentModalViewController:viewController animated:YES];
     
     PopupViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopupViewController"];
-
     viewController.providesPresentationContextTransitionStyle = YES;
     viewController.definesPresentationContext = YES;
     [viewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-    [self presentViewController:viewController animated:YES completion:nil];
+    
+    [self presentViewController:viewController animated:NO completion:nil];
     
 }
 

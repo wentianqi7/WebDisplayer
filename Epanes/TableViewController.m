@@ -45,7 +45,7 @@
     NSLog(@"clicked");
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
     viewController.destStr = NULL;
-    [self presentViewController:viewController animated:YES completion:nil];
+    [self presentViewController:viewController animated:NO completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +75,7 @@
     NSString *projID = [_projects objectAtIndex:indexPath.row];
     viewController.destStr = _projUrlMap[projID];
     NSLog(@"%@", viewController.destStr);
-    [self presentViewController:viewController animated:YES completion:nil];
+    [self presentViewController:viewController animated:NO completion:nil];
 }
 
 // get json content from given website with filename
