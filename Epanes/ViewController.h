@@ -6,13 +6,14 @@
 //  Copyright (c) 2016 Tianqi Wen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Utils.h"
 
 @interface ViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIButton *titleButton;
 @property (nonatomic) NSString *destStr;
+@property Utils *utils;
 @property NSMutableDictionary *projectMap;
 @property NSMutableArray *history;
 @end

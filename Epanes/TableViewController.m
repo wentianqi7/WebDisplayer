@@ -17,17 +17,17 @@
 
 @implementation TableViewController
 
+const int HISTORY_SIZE = 3;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [_tableButton addTarget:self action:@selector(tableButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    _projects = [[NSMutableArray alloc] init];
-    _projNameMap = [[NSMutableDictionary alloc] init];
-    _projUrlMap = [[NSMutableDictionary alloc] init];
-    _projects = [[DBManager getSharedInstance] getRecentHistory:5];
+    
+    [self initVars];
     if (_projects) {
         // get all valid projects
-        NSMutableArray *projResult = [self getJsonContent:@"http://epanes.math.cmu.edu" filename:@"/projects.json"];
+        NSMutableArray *projResult = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
         for (NSMutableDictionary *dic in projResult) {
             NSString *string = dic[@"title"];
             NSString *projID = dic[@"id"];
@@ -41,8 +41,15 @@
     }
 }
 
+- (void) initVars {
+    _projects = [[NSMutableArray alloc] init];
+    _projNameMap = [[NSMutableDictionary alloc] init];
+    _projUrlMap = [[NSMutableDictionary alloc] init];
+    _utils = [[Utils alloc] init];
+    _projects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
+}
+
 - (IBAction)tableButtonClick:(id)sender {
-    NSLog(@"clicked");
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
     viewController.destStr = NULL;
     [self presentViewController:viewController animated:NO completion:nil];
@@ -50,7 +57,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -78,17 +84,6 @@
     [self presentViewController:viewController animated:NO completion:nil];
 }
 
-// get json content from given website with filename
-- (NSMutableArray *)getJsonContent:(NSString *)webDir filename:(NSString *)filename {
-    NSHTTPURLResponse *response = nil;
-    NSString *sourceStr = [NSString stringWithFormat:[webDir stringByAppendingString:filename]];
-    NSURL *sourceUrl = [NSURL URLWithString:[sourceStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:sourceUrl
-                                                  cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    NSMutableArray *result  = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
-    return result;
-}
+
 
 @end
