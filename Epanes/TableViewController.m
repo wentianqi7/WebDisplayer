@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [_tableButton addTarget:self action:@selector(tableButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     _projects = [[NSMutableArray alloc] init];
     _projNameMap = [[NSMutableDictionary alloc] init];
@@ -41,9 +42,10 @@
 }
 
 - (IBAction)tableButtonClick:(id)sender {
+    NSLog(@"clicked");
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
     viewController.destStr = NULL;
-    [self presentModalViewController:viewController animated:YES];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +75,7 @@
     NSString *projID = [_projects objectAtIndex:indexPath.row];
     viewController.destStr = _projUrlMap[projID];
     NSLog(@"%@", viewController.destStr);
-    [self presentModalViewController:viewController animated:YES];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 // get json content from given website with filename

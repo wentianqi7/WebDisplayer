@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 #import "TableViewController.h"
+#import "PopupViewController.h"
 #import "DBManager.h"
+#import <UIKit/UIKit.h>
 
 @interface ViewController ()<UIWebViewDelegate>
 
@@ -65,8 +67,16 @@
 }
 
 - (IBAction)titleButtonClick:(id)sender {
-	TableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
-	[self presentModalViewController:viewController animated:YES];
+	//TableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
+    //[self presentModalViewController:viewController animated:YES];
+    
+    PopupViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopupViewController"];
+
+    viewController.providesPresentationContextTransitionStyle = YES;
+    viewController.definesPresentationContext = YES;
+    [viewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    [self presentViewController:viewController animated:YES completion:nil];
+    
 }
 
 // get json content from given website with filename

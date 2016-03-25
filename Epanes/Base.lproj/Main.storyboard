@@ -96,7 +96,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlM-C7-RwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1279.5" y="261.5"/>
+            <point key="canvasLocation" x="1068.5" y="256.5"/>
+        </scene>
+        <!--PopupViewController-->
+        <scene sceneID="pop-XE-KDl">
+            <objects>
+                <viewController storyboardIdentifier="PopupViewController" title="PopupViewController" id="BC0-6v-aJX" customClass="PopupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3mW-e0-Npb"/>
+                        <viewControllerLayoutGuide type="bottom" id="s72-kd-uvQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y1g-Id-rKr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="behind_alert_view" translatesAutoresizingMaskIntoConstraints="NO" id="4at-7i-TB7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LjX-9B-Tod" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1511.5" y="261.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="behind_alert_view" width="320" height="460"/>
+    </resources>
 </document>
