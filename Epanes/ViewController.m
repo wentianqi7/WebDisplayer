@@ -26,11 +26,10 @@
     _utils = [[Utils alloc] init];
 
 	// get url from default.json
-	NSString *filename = @"/json/default.json";
 	NSString *destStr;
 	
     if (_destStr == NULL) {
-        NSMutableArray *result = [_utils getJsonContent:WEB_DIR filename:filename];
+        NSMutableArray *result = [_utils getJsonContent:WEB_DIR filename:DEFAULT_FILENAME];
         for (NSMutableDictionary *dic in result) {
             NSString *string = dic[@"url"];
             if (string) {
@@ -49,21 +48,32 @@
 	// register button with listener
 	[_titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
+    NSError *error;
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString *directory = [NSString stringWithFormat:[WEB_DIR stringByAppendingString:@"/projects.d"]];
+    NSURL *dirUrl = [NSURL URLWithString:[directory stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSArray *files = [manager contentsOfDirectoryAtURL:dirUrl includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
+    NSPredicate *fltr = [NSPredicate predicateWithFormat:@"pathExtension='json'"];
+    NSArray *onlyJson = [files filteredArrayUsingPredicate:fltr];
+    
+    NSLog(@"directory contents: %@", onlyJson);
+    NSLog(@"error: %@", error);
+    
     // get all valid projects
     NSMutableArray *projResult = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
     for (NSMutableDictionary *dic in projResult) {
         NSString *string = dic[@"url"];
         NSString *projID = dic[@"id"];
+        NSString *title = dic[@"title"];
         if (string) {
             [_projectMap setValue:projID forKey:string];
-            NSLog(@"load project: %@, %@, %lu", projID, string, _projectMap.count);
+            NSLog(@"load project: %@, %@, %@, %lu", projID, string, title, _projectMap.count);
         }
     }
 }
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
 }
 
 - (IBAction)titleButtonClick:(id)sender {
@@ -76,7 +86,6 @@
     [viewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     
     [self presentViewController:viewController animated:NO completion:nil];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated {

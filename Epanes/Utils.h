@@ -16,5 +16,6 @@
 - (void)loadFromUrl:(NSString *)destUrlStr view:(UIView *)currentView;
 
 extern NSString *const WEB_DIR;
+extern NSString *const DEFAULT_FILENAME;
 
 @end

@@ -27,6 +27,8 @@ const int HISTORY_SIZE = 3;
     [self initVars];
     if (_projects) {
         // get all valid projects
+        
+        /*
         NSMutableArray *projResult = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
         for (NSMutableDictionary *dic in projResult) {
             NSString *string = dic[@"title"];
@@ -38,6 +40,7 @@ const int HISTORY_SIZE = 3;
                 NSLog(@"id = %@, name = %@", projID, string);
             }
         }
+        */
     }
 }
 

@@ -11,6 +11,7 @@
 @implementation Utils
 
 NSString *const WEB_DIR = @"http://epanes.math.cmu.edu";
+NSString *const DEFAULT_FILENAME = @"/json/default.json";
 
 // get json content from given website with filename
 - (NSMutableArray *)getJsonContent:(NSString *)webDir filename:(NSString *)filename {
