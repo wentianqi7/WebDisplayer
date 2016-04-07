@@ -22,7 +22,7 @@
 	[super viewDidLoad];
     
     _history = [[NSMutableArray alloc] init];
-    _projectMap = [[NSMutableDictionary alloc] init];
+    _urlToIdMap = [[NSMutableDictionary alloc] init];
     _utils = [[Utils alloc] init];
 
 	// get url from default.json
@@ -48,26 +48,14 @@
 	// register button with listener
 	[_titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    NSError *error;
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSString *directory = [NSString stringWithFormat:[WEB_DIR stringByAppendingString:@"/projects.d"]];
-    NSURL *dirUrl = [NSURL URLWithString:[directory stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSArray *files = [manager contentsOfDirectoryAtURL:dirUrl includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
-    NSPredicate *fltr = [NSPredicate predicateWithFormat:@"pathExtension='json'"];
-    NSArray *onlyJson = [files filteredArrayUsingPredicate:fltr];
-    
-    NSLog(@"directory contents: %@", onlyJson);
-    NSLog(@"error: %@", error);
-    
     // get all valid projects
     NSMutableArray *projResult = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
     for (NSMutableDictionary *dic in projResult) {
-        NSString *string = dic[@"url"];
+        NSString *urlStr = dic[@"url"];
         NSString *projID = dic[@"id"];
-        NSString *title = dic[@"title"];
-        if (string) {
-            [_projectMap setValue:projID forKey:string];
-            NSLog(@"load project: %@, %@, %@, %lu", projID, string, title, _projectMap.count);
+        if (urlStr) {
+            [_urlToIdMap setValue:projID forKey:urlStr];
+            NSLog(@"load project: %@, %@", projID, urlStr);
         }
     }
 }
@@ -77,9 +65,6 @@
 }
 
 - (IBAction)titleButtonClick:(id)sender {
-	//TableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
-    //[self presentModalViewController:viewController animated:YES];
-    
     PopupViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopupViewController"];
     viewController.providesPresentationContextTransitionStyle = YES;
     viewController.definesPresentationContext = YES;
@@ -94,7 +79,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(nonnull NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString *urlStr = request.mainDocumentURL.absoluteString;
-    NSString *value = _projectMap[urlStr];
+    NSString *value = _urlToIdMap[urlStr];
     if (value) {
         // save data to database
         int projID = [value intValue];

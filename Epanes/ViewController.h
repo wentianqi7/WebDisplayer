@@ -14,7 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *titleButton;
 @property (nonatomic) NSString *destStr;
 @property Utils *utils;
-@property NSMutableDictionary *projectMap;
+@property NSMutableDictionary *urlToIdMap;
 @property NSMutableArray *history;
 @end
 

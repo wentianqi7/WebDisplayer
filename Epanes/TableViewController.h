@@ -11,8 +11,8 @@
 @interface TableViewController : UITableViewController
 @property (strong, nonatomic) IBOutlet UIButton *tableButton;
 @property NSMutableArray *projects;
-@property NSMutableDictionary *projNameMap;
-@property NSMutableDictionary *projUrlMap;
+@property NSMutableDictionary *idToTitleMap;
+@property NSMutableDictionary *idToUrlMap;
 @property Utils* utils;
 extern const int HISTORY_SIZE;
 @end

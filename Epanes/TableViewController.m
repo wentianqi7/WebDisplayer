@@ -17,7 +17,7 @@
 
 @implementation TableViewController
 
-const int HISTORY_SIZE = 3;
+const int HISTORY_SIZE = 5;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,27 +27,24 @@ const int HISTORY_SIZE = 3;
     [self initVars];
     if (_projects) {
         // get all valid projects
-        
-        /*
         NSMutableArray *projResult = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
         for (NSMutableDictionary *dic in projResult) {
-            NSString *string = dic[@"title"];
+            NSString *title = dic[@"title"];
             NSString *projID = dic[@"id"];
             NSString *url = dic[@"url"];
-            if (string && projID && url) {
-                [_projNameMap setValue:string forKey:projID];
-                [_projUrlMap setValue:url forKey:projID];
-                NSLog(@"id = %@, name = %@", projID, string);
+            if (title && projID && url) {
+                [_idToTitleMap setValue:title forKey:projID];
+                [_idToUrlMap setValue:url forKey:projID];
+                NSLog(@"id = %@, name = %@", projID, title);
             }
         }
-        */
     }
 }
 
 - (void) initVars {
     _projects = [[NSMutableArray alloc] init];
-    _projNameMap = [[NSMutableDictionary alloc] init];
-    _projUrlMap = [[NSMutableDictionary alloc] init];
+    _idToTitleMap = [[NSMutableDictionary alloc] init];
+    _idToUrlMap = [[NSMutableDictionary alloc] init];
     _utils = [[Utils alloc] init];
     _projects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
 }
@@ -75,14 +72,14 @@ const int HISTORY_SIZE = 3;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
     NSString *projID = [_projects objectAtIndex:indexPath.row];
-    cell.tableCellText.text = _projNameMap[projID];
+    cell.tableCellText.text = _idToTitleMap[projID];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
     NSString *projID = [_projects objectAtIndex:indexPath.row];
-    viewController.destStr = _projUrlMap[projID];
+    viewController.destStr = _idToUrlMap[projID];
     NSLog(@"%@", viewController.destStr);
     [self presentViewController:viewController animated:NO completion:nil];
 }
