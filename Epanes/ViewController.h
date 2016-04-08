@@ -16,5 +16,6 @@
 @property Utils *utils;
 @property NSMutableDictionary *urlToIdMap;
 @property NSMutableArray *history;
+@property NSString *curUrl;
 @end
 

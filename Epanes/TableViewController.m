@@ -80,7 +80,6 @@ const int HISTORY_SIZE = 5;
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
     NSString *projID = [_projects objectAtIndex:indexPath.row];
     viewController.destStr = _idToUrlMap[projID];
-    NSLog(@"%@", viewController.destStr);
     [self presentViewController:viewController animated:NO completion:nil];
 }
 

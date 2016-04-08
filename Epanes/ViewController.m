@@ -66,6 +66,8 @@
 
 - (IBAction)titleButtonClick:(id)sender {
     PopupViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopupViewController"];
+    viewController.prevStr = _curUrl;
+    NSLog(@"**** prevStr = %@", viewController.prevStr);
     viewController.providesPresentationContextTransitionStyle = YES;
     viewController.definesPresentationContext = YES;
     [viewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
@@ -78,8 +80,9 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(nonnull NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSString *urlStr = request.mainDocumentURL.absoluteString;
-    NSString *value = _urlToIdMap[urlStr];
+    _curUrl = request.mainDocumentURL.absoluteString;
+    
+    NSString *value = _urlToIdMap[_curUrl];
     if (value) {
         // save data to database
         int projID = [value intValue];

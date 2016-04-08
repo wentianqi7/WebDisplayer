@@ -8,6 +8,7 @@
 
 #import "PopupViewController.h"
 #import "TableViewController.h"
+#import "ViewController.h"
 
 @interface PopupViewController ()
 
@@ -29,6 +30,7 @@
     viewController.view.center = CGPointMake(viewController.view.frame.size.width/2, viewController.view.frame.size.height/2);
     [viewController.view setNeedsLayout];
     viewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 90, [UIScreen mainScreen].bounds.size.height / 2 - 120, 180, 240);
+    viewController.view.tag = 500;
     [viewController.tableView setDelegate:viewController];
     [viewController.tableView setDataSource:viewController];
     
@@ -38,6 +40,16 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    // CGPoint touchLocation = [touch locationInView:touch.view];
+    NSLog(@"%@", touch.view);
+    
+    ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    viewController.destStr = _prevStr;
+    [self presentViewController:viewController animated:NO completion:nil];
 }
 
 @end

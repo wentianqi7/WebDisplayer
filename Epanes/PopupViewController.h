@@ -10,4 +10,6 @@
 
 @interface PopupViewController : ViewController
 
+@property NSString *prevStr;
+
 @end
