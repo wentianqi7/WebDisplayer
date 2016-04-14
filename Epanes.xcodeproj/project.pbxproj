@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00A38BE41CC0274200CBB9B5 /* StoryboardIpad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00A38BE31CC0274200CBB9B5 /* StoryboardIpad.storyboard */; };
 		00C124DF1CA5B1D400A3EAD7 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C124DE1CA5B1D400A3EAD7 /* Utils.m */; };
 		00C23C551C9B6F8B00A9918A /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C23C541C9B6F8B00A9918A /* DBManager.m */; };
 		00C23C571C9B78CA00A9918A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C23C561C9B78CA00A9918A /* libsqlite3.tbd */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00A38BE31CC0274200CBB9B5 /* StoryboardIpad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardIpad.storyboard; sourceTree = "<group>"; };
 		00C124DD1CA5B1D400A3EAD7 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		00C124DE1CA5B1D400A3EAD7 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		00C23C531C9B6F8B00A9918A /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				689F64E81C75524F006D7245 /* ViewController.h */,
 				689F64E91C75524F006D7245 /* ViewController.m */,
 				689F64EB1C75524F006D7245 /* Main.storyboard */,
+				00A38BE31CC0274200CBB9B5 /* StoryboardIpad.storyboard */,
 				00D0E1F41C84A70B005FC012 /* TableViewCell.h */,
 				00D0E1F51C84A70B005FC012 /* TableViewCell.m */,
 				00D0E1F71C84A718005FC012 /* TableViewController.h */,
@@ -232,6 +235,7 @@
 				689F64ED1C75524F006D7245 /* Main.storyboard in Resources */,
 				689F64F21C75524F006D7245 /* LaunchScreen.xib in Resources */,
 				689F64EF1C75524F006D7245 /* Images.xcassets in Resources */,
+				00A38BE41CC0274200CBB9B5 /* StoryboardIpad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,7 @@
     viewController.view.transform = CGAffineTransformMakeScale(scale, scale);
     viewController.view.center = CGPointMake(viewController.view.frame.size.width/2, viewController.view.frame.size.height/2);
     [viewController.view setNeedsLayout];
-    viewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 90, [UIScreen mainScreen].bounds.size.height / 2 - 120, 180, 240);
+    viewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 30/scaleX, [UIScreen mainScreen].bounds.size.height / 2 - 40/scaleY, 60/scaleX, 80/scaleY);
     viewController.view.tag = 500;
     [viewController.tableView setDelegate:viewController];
     [viewController.tableView setDataSource:viewController];

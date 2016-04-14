@@ -38,7 +38,6 @@
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQd-p9-uWo">
                                 <rect key="frame" x="514" y="0.0" width="86" height="61"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="circle-bg">
@@ -119,16 +118,19 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="c8W-WN-Ztm" firstAttribute="centerX" secondItem="UCQ-be-DKg" secondAttribute="centerX" id="jW3-C6-eZD"/>
+                                        <constraint firstItem="c8W-WN-Ztm" firstAttribute="centerX" secondItem="UCQ-be-DKg" secondAttribute="centerX" id="PF1-bh-2BL"/>
+                                        <constraint firstItem="c8W-WN-Ztm" firstAttribute="centerY" secondItem="UCQ-be-DKg" secondAttribute="centerY" id="bu0-pl-pCH"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="jW3-C6-eZD"/>
+                                            <exclude reference="PF1-bh-2BL"/>
+                                            <exclude reference="bu0-pl-pCH"/>
                                         </mask>
                                     </variation>
-                                    <variation key="heightClass=regular-widthClass=compact">
+                                    <variation key="widthClass=compact">
                                         <mask key="constraints">
-                                            <include reference="jW3-C6-eZD"/>
+                                            <include reference="PF1-bh-2BL"/>
+                                            <include reference="bu0-pl-pCH"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -194,6 +196,6 @@
     </scenes>
     <resources>
         <image name="behind_alert_view" width="320" height="460"/>
-        <image name="circle-bg" width="29" height="29"/>
+        <image name="circle-bg" width="34" height="34"/>
     </resources>
 </document>
