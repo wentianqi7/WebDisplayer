@@ -23,7 +23,7 @@ const int HISTORY_SIZE = 5;
     [super viewDidLoad];
     
     [_tableButton addTarget:self action:@selector(tableButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [_tableButton sizeToFit];
     [self initVars];
     if (_projects) {
         // get all valid projects
@@ -52,6 +52,7 @@ const int HISTORY_SIZE = 5;
 - (IBAction)tableButtonClick:(id)sender {
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
     viewController.destStr = NULL;
+    viewController.isFirstTime = @"No";
     [self presentViewController:viewController animated:NO completion:nil];
 }
 
@@ -81,6 +82,10 @@ const int HISTORY_SIZE = 5;
     NSString *projID = [_projects objectAtIndex:indexPath.row];
     viewController.destStr = _idToUrlMap[projID];
     [self presentViewController:viewController animated:NO completion:nil];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    return tableView.bounds.size.height / 10.f;
 }
 
 

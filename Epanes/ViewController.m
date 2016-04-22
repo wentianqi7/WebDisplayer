@@ -27,8 +27,20 @@
 
 	// get url from default.json
 	NSString *destStr;
-	
     if (_destStr == NULL) {
+        if (_isFirstTime == NULL) {
+            NSMutableArray *temp = [[DBManager getSharedInstance] getRecentHistory:1];
+            int prevId = [[temp objectAtIndex:0] intValue];
+            NSMutableArray *tempResults = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
+            for (NSMutableDictionary *dic in tempResults) {
+                NSString *tempUrl = dic[@"url"];
+                NSString *tempId = dic[@"id"];
+                if ([tempId intValue] == prevId) {
+                    destStr = tempUrl;
+                }
+            }
+        } else {
+        
         NSMutableArray *result = [_utils getJsonContent:WEB_DIR filename:DEFAULT_FILENAME];
         for (NSMutableDictionary *dic in result) {
             NSString *string = dic[@"url"];
@@ -38,9 +50,31 @@
                 NSLog(@"webview loaded - dest: %@", destStr);
             }
         }
+        }
     } else {
         destStr = _destStr;
     }
+    /*
+    NSString *prevProj = [[DBManager getSharedInstance] getPrevProject];
+    if (_destStr == NULL) {
+        if (_isFirstTime == NULL && prevProj) {
+            destStr = prevProj;
+        } else {
+            // if user never viewed other project
+            NSMutableArray *result = [_utils getJsonContent:WEB_DIR filename:DEFAULT_FILENAME];
+            for (NSMutableDictionary *dic in result) {
+                NSString *string = dic[@"url"];
+                if (string) {
+                    // valid project field found
+                    destStr = [_utils processString:string];
+                    NSLog(@"webview loaded - dest: %@", destStr);
+                }
+            }
+        }
+    } else {
+        destStr = _destStr;
+    }
+     */
 	
 	// set content of webview to the url
 	[_utils loadFromUrl:destStr view:_webView];
@@ -81,17 +115,25 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(nonnull NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     _curUrl = request.mainDocumentURL.absoluteString;
-    
+    NSLog(@"current url = %@", _curUrl);
     NSString *value = _urlToIdMap[_curUrl];
     if (value) {
         // save data to database
         int projID = [value intValue];
-        BOOL success = [[DBManager getSharedInstance] saveData:projID];
+        BOOL success = [[DBManager getSharedInstance] saveHistoryData:projID];
         if (success) {
-            NSLog(@"save %d to database", projID);
+            NSLog(@"!!!save %d to database", projID);
         } else {
-            NSLog(@"insert to database failed");
+            NSLog(@"!!!insert to database failed");
         }
+        /*
+        success = [[DBManager getSharedInstance] savePrevProjUrl:_curUrl];
+        if (success) {
+            NSLog(@"!!!save %@ to database", _curUrl);
+        } else {
+            NSLog(@"!!!insert prev project to database failed");
+        }
+        */
     }
     return TRUE;
 }

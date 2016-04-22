@@ -36,12 +36,19 @@ static sqlite3_stmt *statement = nil;
     if ([filemgr fileExistsAtPath: databasePath ] == FALSE) {
         const char *dbpath = [databasePath UTF8String];
         if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
-            char *errMsg;
+            const char *errMsg;
             const char *sql_stmt = "create table if not exists projectHistory (rid integer primary key autoincrement, projID integer)";
+            const char *sql_stmt2 = "create table if not exists prevProject (pid integer primary key, projUrl TEXT)";
+
             if (sqlite3_exec(database, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK) {
                 isSuccess = NO;
                 NSLog(@"Failed to create table %s", errMsg);
             }
+            if (sqlite3_exec(database, sql_stmt2, NULL, NULL, &errMsg) != SQLITE_OK) {
+                isSuccess = NO;
+                NSLog(@"Failed to create table %s", errMsg);
+            }
+            NSLog(@"create table success");
             sqlite3_close(database);
             return  isSuccess;
         }
@@ -53,7 +60,7 @@ static sqlite3_stmt *statement = nil;
     return isSuccess;
 }
 
-- (BOOL) saveData:(int) projID {
+- (BOOL) saveHistoryData:(int) projID {
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
         NSString *querySQL = [NSString stringWithFormat:@"delete from projectHistory where projID = %d", projID];
@@ -93,6 +100,48 @@ static sqlite3_stmt *statement = nil;
         }
     }
     
+    return nil;
+}
+
+- (BOOL) savePrevProjUrl:(NSString *) prevUrl {
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        NSString *querySQL = @"delete from prevProject where pid = 0";
+        const char *delete_stmt = [querySQL UTF8String];
+        sqlite3_prepare_v2(database, delete_stmt, -1, &statement, NULL);
+        sqlite3_step(statement);
+
+        
+        const char *errMsg;
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into prevProject (pid, projUrl) values (\"%d\", \"%@\")", 0, prevUrl];
+        const char *insert_stmt = [insertSQL UTF8String];
+        sqlite3_prepare_v2(database, insert_stmt,-1, &statement, &errMsg);
+        
+        if (sqlite3_step(statement) == SQLITE_DONE) {
+            return TRUE;
+        } else {
+            NSLog(@"save prevproj failed %@", [NSString stringWithCString:errMsg encoding:NSUTF8StringEncoding]);
+            return FALSE;
+        }
+    }
+    return FALSE;
+}
+
+- (NSString *) getPrevProject {
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        NSString *querySQL = @"select projUrl from prevProject where pid = 0";
+        const char *query_stmt = [querySQL UTF8String];
+        const char *errMsg;
+        if (sqlite3_prepare_v2(database, query_stmt, -1, &statement, &errMsg) == SQLITE_OK) {
+            NSString *result;
+            if (sqlite3_step(statement) == SQLITE_ROW) {
+                result = [[NSString alloc] initWithUTF8String: (const char *) sqlite3_column_text(statement, 0)];
+                NSLog(@"read record %@, %@", result, [NSString stringWithCString:errMsg encoding:NSUTF8StringEncoding]);
+            }
+            return result;
+        }
+    }
     return nil;
 }
 
