@@ -7,9 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "TableViewController.h"
 
 @interface PopupViewController : ViewController
 
+@property TableViewController *viewController;
+
 @property NSString *prevStr;
+
 
 @end

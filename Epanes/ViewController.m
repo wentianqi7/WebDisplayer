@@ -28,9 +28,10 @@
 	// get url from default.json
 	NSString *destStr;
     if (_destStr == NULL) {
-        if (_isFirstTime == NULL) {
-            NSMutableArray *temp = [[DBManager getSharedInstance] getRecentHistory:1];
+        NSMutableArray *temp = [[DBManager getSharedInstance] getRecentHistory:1];
+        if (_isFirstTime == NULL && temp.count > 0) {
             int prevId = [[temp objectAtIndex:0] intValue];
+
             NSMutableArray *tempResults = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
             for (NSMutableDictionary *dic in tempResults) {
                 NSString *tempUrl = dic[@"url"];
@@ -40,16 +41,15 @@
                 }
             }
         } else {
-        
-        NSMutableArray *result = [_utils getJsonContent:WEB_DIR filename:DEFAULT_FILENAME];
-        for (NSMutableDictionary *dic in result) {
-            NSString *string = dic[@"url"];
-            if (string) {
-                // valid project field found
-                destStr = [_utils processString:string];
-                NSLog(@"webview loaded - dest: %@", destStr);
+            NSMutableArray *result = [_utils getJsonContent:WEB_DIR filename:DEFAULT_FILENAME];
+            for (NSMutableDictionary *dic in result) {
+                NSString *string = dic[@"url"];
+                if (string) {
+                    // valid project field found
+                    destStr = [_utils processString:string];
+                    NSLog(@"webview loaded - dest: %@", destStr);
+                }
             }
-        }
         }
     } else {
         destStr = _destStr;

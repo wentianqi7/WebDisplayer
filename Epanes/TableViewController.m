@@ -22,8 +22,6 @@ const int HISTORY_SIZE = 5;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [_tableButton addTarget:self action:@selector(tableButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_tableButton sizeToFit];
     [self initVars];
     if (_projects) {
         // get all valid projects
@@ -49,13 +47,6 @@ const int HISTORY_SIZE = 5;
     _projects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
 }
 
-- (IBAction)tableButtonClick:(id)sender {
-    ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    viewController.destStr = NULL;
-    viewController.isFirstTime = @"No";
-    [self presentViewController:viewController animated:NO completion:nil];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -67,27 +58,37 @@ const int HISTORY_SIZE = 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _projects.count;
+    return _projects.count + 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
-    NSString *projID = [_projects objectAtIndex:indexPath.row];
-    cell.tableCellText.text = _idToTitleMap[projID];
+    if (indexPath.row == _projects.count) {
+        cell.tableCellText.text = @"All Projects";
+        cell.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1];
+    } else {
+        NSString *projID = [_projects objectAtIndex:indexPath.row];
+        cell.tableCellText.text = _idToTitleMap[projID];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    NSString *projID = [_projects objectAtIndex:indexPath.row];
-    viewController.destStr = _idToUrlMap[projID];
+    if (indexPath.row == _projects.count) {
+        viewController.destStr = NULL;
+        viewController.isFirstTime = @"No";
+    } else {
+        NSString *projID = [_projects objectAtIndex:indexPath.row];
+        viewController.destStr = _idToUrlMap[projID];
+    }
     [self presentViewController:viewController animated:NO completion:nil];
 }
+
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     return tableView.bounds.size.height / 10.f;
 }
-
 
 
 @end

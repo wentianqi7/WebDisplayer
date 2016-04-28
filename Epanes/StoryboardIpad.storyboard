@@ -89,18 +89,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5GQ-Ri-8ag">
-                            <rect key="frame" x="0.0" y="85" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.49689401909999997" green="0.52122050320000002" blue="0.52748184970000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
-                            <state key="normal" title="All Projects">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <variation key="heightClass=regular">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="120"/>
-                            </variation>
-                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" rowHeight="57" id="J8e-Yw-JGl" customClass="TableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="600" height="57"/>
@@ -168,9 +156,6 @@
                             <outlet property="delegate" destination="jhH-Gq-KQy" id="yEr-m4-Wv1"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="tableButton" destination="5GQ-Ri-8ag" id="zh7-cH-510"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qHV-Mg-fMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

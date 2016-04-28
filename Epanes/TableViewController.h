@@ -9,7 +9,6 @@
 #import "Utils.h"
 
 @interface TableViewController : UITableViewController
-@property (strong, nonatomic) IBOutlet UIButton *tableButton;
 @property NSMutableArray *projects;
 @property NSMutableDictionary *idToTitleMap;
 @property NSMutableDictionary *idToUrlMap;
