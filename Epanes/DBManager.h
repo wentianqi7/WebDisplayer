@@ -17,7 +17,5 @@
 -(BOOL) createDB;
 -(BOOL) saveHistoryData:(int) projID;
 -(NSMutableArray*) getRecentHistory:(int)count;
--(BOOL) savePrevProjUrl:(NSString *) prevUrl;
--(NSString *) getPrevProject;
 
 @end

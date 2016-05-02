@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "PopupViewController.h"
 #import "DBManager.h"
 
 @interface ViewController ()<UIWebViewDelegate>
@@ -17,96 +16,121 @@
 @implementation ViewController
 
 
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
-    _history = [[NSMutableArray alloc] init];
-    _urlToIdMap = [[NSMutableDictionary alloc] init];
-    _utils = [[Utils alloc] init];
+    [self initVars];
 
-	// get url from default.json
 	NSString *destStr;
     if (_destStr == NULL) {
-        NSMutableArray *temp = [[DBManager getSharedInstance] getRecentHistory:1];
-        if (_isFirstTime == NULL && temp.count > 0) {
-            int prevId = [[temp objectAtIndex:0] intValue];
+        if (_isFirstTime == NULL && _prevProjects.count > 0) {
+            // first time enter the app, with previous project viewed
+            // go to last viewed page
+            int prevId = [[_prevProjects objectAtIndex:0] intValue];
 
-            NSMutableArray *tempResults = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
+            NSMutableArray *tempResults = [_utils getJsonContent:WEB_DIR filename:PROJECT_FILE];
             for (NSMutableDictionary *dic in tempResults) {
-                NSString *tempUrl = dic[@"url"];
-                NSString *tempId = dic[@"id"];
+                NSString *tempUrl = dic[URL];
+                NSString *tempId = dic[ID];
                 if ([tempId intValue] == prevId) {
                     destStr = tempUrl;
                 }
             }
         } else {
+            // first time enter the app, without previous projects viewed
+            // get default homepage
             NSMutableArray *result = [_utils getJsonContent:WEB_DIR filename:DEFAULT_FILENAME];
             for (NSMutableDictionary *dic in result) {
-                NSString *string = dic[@"url"];
-                if (string) {
+                NSString *url = dic[URL];
+                if (url) {
                     // valid project field found
-                    destStr = [_utils processString:string];
+                    destStr = [_utils processString:url];
                     NSLog(@"webview loaded - dest: %@", destStr);
                 }
             }
         }
     } else {
+        // not the first time enter the app
+        // go to the targeted page in _destStr
         destStr = _destStr;
     }
-    /*
-    NSString *prevProj = [[DBManager getSharedInstance] getPrevProject];
-    if (_destStr == NULL) {
-        if (_isFirstTime == NULL && prevProj) {
-            destStr = prevProj;
-        } else {
-            // if user never viewed other project
-            NSMutableArray *result = [_utils getJsonContent:WEB_DIR filename:DEFAULT_FILENAME];
-            for (NSMutableDictionary *dic in result) {
-                NSString *string = dic[@"url"];
-                if (string) {
-                    // valid project field found
-                    destStr = [_utils processString:string];
-                    NSLog(@"webview loaded - dest: %@", destStr);
-                }
-            }
-        }
-    } else {
-        destStr = _destStr;
-    }
-     */
 	
 	// set content of webview to the url
 	[_utils loadFromUrl:destStr view:_webView];
-	
-	// register button with listener
-	[_titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     // get all valid projects
-    NSMutableArray *projResult = [_utils getJsonContent:WEB_DIR filename:@"/projects.json"];
+    NSMutableArray *projResult = [_utils getJsonContent:WEB_DIR filename:PROJECT_FILE];
     for (NSMutableDictionary *dic in projResult) {
-        NSString *urlStr = dic[@"url"];
-        NSString *projID = dic[@"id"];
-        if (urlStr) {
+        NSString *urlStr = dic[URL];
+        NSString *title = dic[TITLE];
+        NSString *projID = dic[ID];
+        if (urlStr && title && projID) {
             [_urlToIdMap setValue:projID forKey:urlStr];
-            NSLog(@"load project: %@, %@", projID, urlStr);
+            Project newProj = {title, urlStr};
+            [_idToProjectMap setObject:[NSValue value:&newProj withObjCType:@encode(Project)] forKey:projID];
+            NSLog(@"add project: %@ %@ %@\n", projID, title, urlStr);
         }
     }
+    
+    // register button with listener
+    [_titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
+- (void) initVars {
+    _history = [[NSMutableArray alloc] init];
+    _urlToIdMap = [[NSMutableDictionary alloc] init];
+    _prevProjects = [[NSMutableArray alloc] init];
+    _idToProjectMap = [[NSMutableDictionary alloc] init];
+    _utils = [[Utils alloc] init];
+    
+    _prevProjects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
 }
 
 - (IBAction)titleButtonClick:(id)sender {
-    PopupViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopupViewController"];
-    viewController.prevStr = _curUrl;
-    NSLog(@"**** prevStr = %@", viewController.prevStr);
-    viewController.providesPresentationContextTransitionStyle = YES;
-    viewController.definesPresentationContext = YES;
-    [viewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-    
-    [self presentViewController:viewController animated:NO completion:nil];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Project History" delegate:self
+                                              cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    popup.tag = 1;
+    _prevProjects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
+    NSLog(@"prev projects size : %lu", _prevProjects.count);
+    for (NSString *idStr in _prevProjects) {
+        Project tempProj;
+        NSValue *value = _idToProjectMap[idStr];
+        if (!value) {
+            continue;
+        }
+        [value getValue:&tempProj];
+        [popup addButtonWithTitle:tempProj.title];
+    }
+    [popup addButtonWithTitle:@"Show All Projects"];
+    popup.cancelButtonIndex = [popup addButtonWithTitle:@"Cancel"];
+    [popup showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (popup.tag) {
+        case 1: {
+            // menu action sheet
+            if (buttonIndex > _prevProjects.count) {
+                return;
+            }
+            ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+            if (buttonIndex < _prevProjects.count) {
+                Project tempProj;
+                NSValue *value = _idToProjectMap[[_prevProjects objectAtIndex:buttonIndex]];
+                if (value) {
+                    [value getValue:&tempProj];
+                    viewController.destStr = tempProj.url;
+                } else {
+                    viewController.destStr = NULL;
+                    viewController.isFirstTime = @"No";
+                }
+            } else {
+                // show all projects
+                viewController.destStr = NULL;
+                viewController.isFirstTime = @"No";
+            }
+            [self presentViewController:viewController animated:NO completion:nil];
+        }
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -126,14 +150,6 @@
         } else {
             NSLog(@"!!!insert to database failed");
         }
-        /*
-        success = [[DBManager getSharedInstance] savePrevProjUrl:_curUrl];
-        if (success) {
-            NSLog(@"!!!save %@ to database", _curUrl);
-        } else {
-            NSLog(@"!!!insert prev project to database failed");
-        }
-        */
     }
     return TRUE;
 }

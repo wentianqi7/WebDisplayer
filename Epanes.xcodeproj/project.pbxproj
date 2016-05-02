@@ -11,9 +11,6 @@
 		00C124DF1CA5B1D400A3EAD7 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C124DE1CA5B1D400A3EAD7 /* Utils.m */; };
 		00C23C551C9B6F8B00A9918A /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C23C541C9B6F8B00A9918A /* DBManager.m */; };
 		00C23C571C9B78CA00A9918A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C23C561C9B78CA00A9918A /* libsqlite3.tbd */; };
-		00D0E1F61C84A70B005FC012 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D0E1F51C84A70B005FC012 /* TableViewCell.m */; };
-		00D0E1F91C84A718005FC012 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D0E1F81C84A718005FC012 /* TableViewController.m */; };
-		00D977F11CA575CC006371D9 /* PopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D977F01CA575CC006371D9 /* PopupViewController.m */; };
 		689F64E41C75524F006D7245 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F64E31C75524F006D7245 /* main.m */; };
 		689F64E71C75524F006D7245 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F64E61C75524F006D7245 /* AppDelegate.m */; };
 		689F64EA1C75524F006D7245 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F64E91C75524F006D7245 /* ViewController.m */; };
@@ -40,12 +37,6 @@
 		00C23C531C9B6F8B00A9918A /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		00C23C541C9B6F8B00A9918A /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		00C23C561C9B78CA00A9918A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		00D0E1F41C84A70B005FC012 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		00D0E1F51C84A70B005FC012 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
-		00D0E1F71C84A718005FC012 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		00D0E1F81C84A718005FC012 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		00D977EF1CA575CC006371D9 /* PopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupViewController.h; sourceTree = "<group>"; };
-		00D977F01CA575CC006371D9 /* PopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupViewController.m; sourceTree = "<group>"; };
 		689F64DE1C75524F006D7245 /* Epanes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epanes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		689F64E21C75524F006D7245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		689F64E31C75524F006D7245 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -110,12 +101,6 @@
 				689F64E91C75524F006D7245 /* ViewController.m */,
 				689F64EB1C75524F006D7245 /* Main.storyboard */,
 				00A38BE31CC0274200CBB9B5 /* StoryboardIpad.storyboard */,
-				00D0E1F41C84A70B005FC012 /* TableViewCell.h */,
-				00D0E1F51C84A70B005FC012 /* TableViewCell.m */,
-				00D0E1F71C84A718005FC012 /* TableViewController.h */,
-				00D0E1F81C84A718005FC012 /* TableViewController.m */,
-				00D977EF1CA575CC006371D9 /* PopupViewController.h */,
-				00D977F01CA575CC006371D9 /* PopupViewController.m */,
 				00C124DD1CA5B1D400A3EAD7 /* Utils.h */,
 				00C124DE1CA5B1D400A3EAD7 /* Utils.m */,
 				689F64EE1C75524F006D7245 /* Images.xcassets */,
@@ -253,13 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00D0E1F61C84A70B005FC012 /* TableViewCell.m in Sources */,
 				689F64EA1C75524F006D7245 /* ViewController.m in Sources */,
 				689F64E71C75524F006D7245 /* AppDelegate.m in Sources */,
 				00C124DF1CA5B1D400A3EAD7 /* Utils.m in Sources */,
 				00C23C551C9B6F8B00A9918A /* DBManager.m in Sources */,
-				00D0E1F91C84A718005FC012 /* TableViewController.m in Sources */,
-				00D977F11CA575CC006371D9 /* PopupViewController.m in Sources */,
 				689F64E41C75524F006D7245 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,8 +10,13 @@
 
 @implementation Utils
 
-NSString *const WEB_DIR = @"http://epanes.math.cmu.edu";
-NSString *const DEFAULT_FILENAME = @"/json/default.json";
+NSString * const WEB_DIR = @"http://epanes.math.cmu.edu";
+NSString * const DEFAULT_FILENAME = @"/json/default.json";
+NSString * const PROJECT_FILE = @"/projects.json";
+NSString * const URL = @"url";
+NSString * const TITLE = @"title";
+NSString * const ID = @"id";
+int const HISTORY_SIZE = 5;
 
 // get json content from given website with filename
 - (NSMutableArray *)getJsonContent:(NSString *)webDir filename:(NSString *)filename {
