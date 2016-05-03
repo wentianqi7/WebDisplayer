@@ -102,12 +102,19 @@
     }
     [popup addButtonWithTitle:@"Show All Projects"];
     popup.cancelButtonIndex = [popup addButtonWithTitle:@"Cancel"];
-    [popup showInView:self.view];
+    
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
+        [popup showFromRect:_titleButton.frame inView:self.view animated:YES];
+    } else {
+        [popup showInView:self.view];
+    }
 }
 
-- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)popup didDismissWithButtonIndex:(NSInteger)buttonIndex {
+//- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (popup.tag) {
         case 1: {
+            NSLog(@"button clicked %ld, %lu", buttonIndex, _prevProjects.count);
             // menu action sheet
             if (buttonIndex > _prevProjects.count) {
                 return;

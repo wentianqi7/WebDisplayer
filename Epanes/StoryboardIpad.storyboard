@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--webview controller-->
@@ -20,6 +21,9 @@
                             <webView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAB-10-KMe">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                </variation>
                                 <variation key="heightClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 </variation>
@@ -43,6 +47,9 @@
                                 <state key="normal" image="circle-bg">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="549" y="0.0" width="51" height="52"/>
+                                </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="349" y="0.0" width="51" height="52"/>
                                 </variation>
@@ -54,14 +61,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dAB-10-KMe" firstAttribute="width" secondItem="Ox7-fu-ORp" secondAttribute="width" id="Qmc-MJ-Y6m"/>
+                            <constraint firstItem="vkQ-Kh-qg0" firstAttribute="top" secondItem="oCh-ie-Jbx" secondAttribute="bottom" constant="-20" id="TZt-dQ-MnZ"/>
                             <constraint firstItem="dAB-10-KMe" firstAttribute="height" secondItem="Ox7-fu-ORp" secondAttribute="height" id="VD9-T2-12U"/>
                             <constraint firstItem="vkQ-Kh-qg0" firstAttribute="trailing" secondItem="dAB-10-KMe" secondAttribute="trailing" id="YEd-bq-luB"/>
                             <constraint firstItem="vkQ-Kh-qg0" firstAttribute="top" secondItem="dAB-10-KMe" secondAttribute="top" id="dK6-Wm-LAb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vkQ-Kh-qg0" secondAttribute="trailing" constant="-20" id="oYh-NP-V6C"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="TZt-dQ-MnZ"/>
                                 <exclude reference="YEd-bq-luB"/>
                                 <exclude reference="dK6-Wm-LAb"/>
+                                <exclude reference="oYh-NP-V6C"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="TZt-dQ-MnZ"/>
+                                <include reference="oYh-NP-V6C"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
