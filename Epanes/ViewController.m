@@ -92,6 +92,10 @@
     _popup.tag = 1;
     _prevProjects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
     NSLog(@"prev projects size : %lu", _prevProjects.count);
+    [self showActionSheet];
+}
+
+- (void)showActionSheet {
     for (NSString *idStr in _prevProjects) {
         NSLog(@"[idStr]=%@", idStr);
         NSString *title = _idToTitleMap[idStr];
@@ -103,11 +107,11 @@
     [_popup addButtonWithTitle:@"Show All Projects"];
     _popup.cancelButtonIndex = [_popup addButtonWithTitle:@"Cancel"];
     
-    //if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
-    //    [_popup showFromRect:_titleButton.frame inView:self.view animated:YES];
-    //} else {
-    [_popup showInView:self.view];
-    //}
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
+        [_popup showFromRect:_titleButton.frame inView:self.view animated:YES];
+    } else {
+        [_popup showInView:self.view];
+    }
 }
 
 - (void)actionSheet:(UIActionSheet *)popup didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -164,6 +168,8 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && _popup ) {
         NSLog(@"rotation detect &&&&&&&&&&&&");
+        [_popup dismissWithClickedButtonIndex:_prevProjects.count+1 animated:NO];
+        [self showActionSheet];
     }
 }
 
