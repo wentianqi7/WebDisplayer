@@ -87,9 +87,9 @@
 }
 
 - (IBAction)titleButtonClick:(id)sender {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Project History" delegate:self
+    _popup = [[UIActionSheet alloc] initWithTitle:@"Project History" delegate:self
                                               cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-    popup.tag = 1;
+    _popup.tag = 1;
     _prevProjects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
     NSLog(@"prev projects size : %lu", _prevProjects.count);
     for (NSString *idStr in _prevProjects) {
@@ -97,17 +97,17 @@
         NSString *title = _idToTitleMap[idStr];
         NSString *url = _idToUrlMap[idStr];
         if (title && url) {
-            [popup addButtonWithTitle:title];
+            [_popup addButtonWithTitle:title];
         }
     }
-    [popup addButtonWithTitle:@"Show All Projects"];
-    popup.cancelButtonIndex = [popup addButtonWithTitle:@"Cancel"];
+    [_popup addButtonWithTitle:@"Show All Projects"];
+    _popup.cancelButtonIndex = [_popup addButtonWithTitle:@"Cancel"];
     
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
-        [popup showFromRect:_titleButton.frame inView:self.view animated:YES];
-    } else {
-        [popup showInView:self.view];
-    }
+    //if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
+    //    [_popup showFromRect:_titleButton.frame inView:self.view animated:YES];
+    //} else {
+    [_popup showInView:self.view];
+    //}
 }
 
 - (void)actionSheet:(UIActionSheet *)popup didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -159,6 +159,12 @@
         }
     }
     return TRUE;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && _popup ) {
+        NSLog(@"rotation detect &&&&&&&&&&&&");
+    }
 }
 
 

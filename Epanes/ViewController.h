@@ -21,5 +21,6 @@
 @property NSMutableArray *history;
 @property NSString *curUrl;
 @property NSString *isFirstTime;
+@property UIActionSheet *popup;
 @end
 
