@@ -65,8 +65,8 @@
         NSString *projID = dic[ID];
         if (urlStr && title && projID) {
             [_urlToIdMap setValue:projID forKey:urlStr];
-            Project newProj = {title, urlStr};
-            [_idToProjectMap setObject:[NSValue value:&newProj withObjCType:@encode(Project)] forKey:projID];
+            [_idToTitleMap setValue:title forKey:projID];
+            [_idToUrlMap setValue:urlStr forKey:projID];
             NSLog(@"add project: %@ %@ %@\n", projID, title, urlStr);
         }
     }
@@ -79,7 +79,8 @@
     _history = [[NSMutableArray alloc] init];
     _urlToIdMap = [[NSMutableDictionary alloc] init];
     _prevProjects = [[NSMutableArray alloc] init];
-    _idToProjectMap = [[NSMutableDictionary alloc] init];
+    _idToTitleMap = [[NSMutableDictionary alloc] init];
+    _idToUrlMap = [[NSMutableDictionary alloc] init];
     _utils = [[Utils alloc] init];
     
     _prevProjects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
@@ -92,13 +93,12 @@
     _prevProjects = [[DBManager getSharedInstance] getRecentHistory:HISTORY_SIZE];
     NSLog(@"prev projects size : %lu", _prevProjects.count);
     for (NSString *idStr in _prevProjects) {
-        Project tempProj;
-        NSValue *value = _idToProjectMap[idStr];
-        if (!value) {
-            continue;
+        NSLog(@"[idStr]=%@", idStr);
+        NSString *title = _idToTitleMap[idStr];
+        NSString *url = _idToUrlMap[idStr];
+        if (title && url) {
+            [popup addButtonWithTitle:title];
         }
-        [value getValue:&tempProj];
-        [popup addButtonWithTitle:tempProj.title];
     }
     [popup addButtonWithTitle:@"Show All Projects"];
     popup.cancelButtonIndex = [popup addButtonWithTitle:@"Cancel"];
@@ -121,11 +121,11 @@
             }
             ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
             if (buttonIndex < _prevProjects.count) {
-                Project tempProj;
-                NSValue *value = _idToProjectMap[[_prevProjects objectAtIndex:buttonIndex]];
-                if (value) {
-                    [value getValue:&tempProj];
-                    viewController.destStr = tempProj.url;
+                NSString *idStr = [_prevProjects objectAtIndex:buttonIndex];
+                NSString *title = _idToTitleMap[idStr];
+                NSString *url = _idToUrlMap[idStr];
+                if (title && url) {
+                    viewController.destStr = url;
                 } else {
                     viewController.destStr = NULL;
                     viewController.isFirstTime = @"No";
